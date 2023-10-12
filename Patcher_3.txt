@@ -1,0 +1,153 @@
+
+
+//I bookmarked several onglets in different folder in ms edge. If this
+//link below is not suitable then if Im worng
+//just see other links.
+//see: https://github.com/paul99/v8mips/blob/81bc6672647766d191d5874cbee0d0b3025b9b94/src/compiler/pipeline.cc#L908
+
+
+#include "pipeline.h" //v8mips library
+
+class Patcher
+{
+
+private: 
+	Code* code; //see pipeline.cc privates but Im not sure that this is what I need; CHECK IT !!!!!!
+
+public:
+
+	Isolate* createIsolateFromCode();
+	void prepareJobImpl( Isolate* iso)
+	{
+		pipeline->prepareJobImpl(iso);
+	}
+
+	void executeJobImpl()
+	{
+		pipeline->ExecuteJobImpl();
+	}
+
+	void getMustPatchedIndexes()
+	{
+		EffectControlLinearizationPhase->Run(PipelineData* data, Zone* temp_zone);
+		EffectControlLinearizer::MaskArrayIndexEnable mask_array_index = EffectControlLinearizationPhase->getIndexes();
+	}
+
+
+	//22.09.2024
+	//I found dead keyhword in pipeline.cc
+	//but I'm not sure if I can use this file !
+	//see: https://github.com/paul99/v8mips/blob/81bc6672647766d191d5874cbee0d0b3025b9b94/test/mjsunit/compiler/dead-code.js
+	void patchFunctionParameter1(.....)
+	{
+
+	}
+
+
+	void patchFunctionParameter2(...)
+	{
+
+	}
+	
+	//this one would be better !
+	void patchFunctionSignature(.....)
+	{
+		dead5(...);
+//see: https://github.com/paul99/v8mips/blob/81bc6672647766d191d5874cbee0d0b3025b9b94/src/compiler/dead-code-elimination.cc
+//for findDeadInput and others.
+
+
+		//No, this one is good I think. Then I need to implement this method in addition with the last detailled method below$
+		//see: https://github.com/paul99/v8mips/blob/master/test/cctest/test-accessors.cc
+	}
+
+	void patchInCode(....)
+	{
+
+	}
+
+
+
+
+
+
+
+
+	//with that that will surely work i think. But i have to isolate the code bunches (optimizer alwayys have max code size !)
+	void executeJobImpl()
+	{
+
+
+
+
+		//crete the isolate !!
+
+		//see: https://github.com/paul99/v8mips/blob/master/test/cctest/setup-isolate-for-tests.h
+
+
+
+
+
+
+
+
+
+
+		//I think I found another interestinng thing !!!!!!
+		//see: https://github.com/paul99/v8mips/blob/master/test/unittests/compiler/node-test-utils.cc
+
+
+template <typename T>
+bool PrintMatchAndExplain(const T& value, const std::string& value_name,
+                          const Matcher<T>& value_matcher,
+                          MatchResultListener* listener) {
+  StringMatchResultListener value_listener;
+  if (!value_matcher.MatchAndExplain(value, &value_listener)) {
+    *listener << "whose " << value_name << " " << value << " doesn't match";
+    if (value_listener.str() != "") {
+      *listener << ", " << value_listener.str();
+    }
+    return false;
+  }
+  return true;
+}
+
+
+		Graph g = isolate.getGraph();
+		for(UINt i=0; i< g->getNodes()->getSize(); i++)
+		{
+		Player* player();
+		StringMatchResultListener value_player_listener;
+		value_matcher.MatchAndExplain( player, &value_player_listeener );
+		
+		}
+
+
+
+		//see:https://github.com/paul99/v8mips/blob/master/test/unittests/compiler/dead-code-elimination-unittest.cc
+
+TEST_F(DeadCodeEliminationTest, MergeWithOnlyDeadInputs) {
+  Node* inputs[kMaxInputs + 1];
+  TRACED_FORRANGE(int, input_count, 1, kMaxInputs - 1) {
+    for (int i = 0; i < input_count; ++i) {
+      inputs[i] = graph()->NewNode(common()->Dead());
+    }
+    Reduction const r = Reduce(
+        graph()->NewNode(common()->Merge(input_count), input_count, inputs));
+    ASSERT_TRUE(r.Changed());
+    EXPECT_THAT(r.replacement(), IsDead());
+  }
+}
+
+
+
+		//next
+		//create isolate !
+
+
+
+		//next
+		pipeline->ExecuteJobImpl();
+	}
+
+};
